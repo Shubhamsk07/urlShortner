@@ -23,7 +23,7 @@ const result = await axios.post('https://app.shubhamkarmyal95.workers.dev/short'
     setResponse(result.data)
   } catch (e) {
     
-    alert("Noty hora laadle.");
+    alert("HTPP wali link paste kar laadle.");
   }
 };
 
