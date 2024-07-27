@@ -8,7 +8,7 @@ const urlSchema = z.string().url();
 function App() {
   const [value,setValue] = useState('');
   const [response,setResponse] = useState(null)
-  const  [isUrl,setIsUrl] =useState(null)
+
  
   async function handleClick(){
 const result = await axios.post('https://app.shubhamkarmyal95.workers.dev/short',{
@@ -19,10 +19,10 @@ const result = await axios.post('https://app.shubhamkarmyal95.workers.dev/short'
   }});
   try {
     urlSchema.parse(value); // Check if input is a valid URL
-    setIsURL(true);
+    
     setResponse(result.data)
   } catch (e) {
-    setIsURL(false);
+    
     alert("Noty hora laadle.");
   }
 };
