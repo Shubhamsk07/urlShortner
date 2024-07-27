@@ -8,7 +8,7 @@ const urlSchema = z.string().url();
 function App() {
   const [value,setValue] = useState('');
   const [response,setResponse] = useState(null)
-  cosnt [isUrl,setIsUrl] =useState(null)
+  const  [isUrl,setIsUrl] =useState(null)
  
   async function handleClick(){
 const result = await axios.post('https://app.shubhamkarmyal95.workers.dev/short',{
