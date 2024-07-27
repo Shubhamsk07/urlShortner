@@ -1,10 +1,14 @@
 import { useState } from 'react'
 import axios from 'axios';
 
+import { z } from 'zod';
+
+const urlSchema = z.string().url();
 
 function App() {
   const [value,setValue] = useState('');
   const [response,setResponse] = useState(null)
+  cosnt [isUrl,setIsUrl] =useState(null)
  
   async function handleClick(){
 const result = await axios.post('https://app.shubhamkarmyal95.workers.dev/short',{
@@ -13,8 +17,17 @@ const result = await axios.post('https://app.shubhamkarmyal95.workers.dev/short'
   headers: {
       'Content-Type': 'application/json',
   }});
-setResponse(result.data)
+  try {
+    urlSchema.parse(value); // Check if input is a valid URL
+    setIsURL(true);
+    setResponse(result.data)
+  } catch (e) {
+    setIsURL(false);
+    alert("Noty hora laadle.");
   }
+};
+
+  
   function handleCopy(){
     navigator.clipboard.writeText(response.shortURL);
     alert('URL Copied Successfully!')
